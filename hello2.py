@@ -12,8 +12,9 @@ def job():
     print("I'm working...")
     try:
         db = dataBaseConnect.ConnectDB.connect()
+        cursor=db.cursor()
         week_forecast = yandexWeather.read_week_forecast()
-        db.execute(
+        cursor.execute(
             dataBaseConnect.ConnectDB.executiv(str(week_forecast.date), str(week_forecast.day_forecasts[0].temperature),
                                                str(week_forecast.day_forecasts[1].temperature),
                                                str(week_forecast.day_forecasts[2].temperature),
@@ -27,7 +28,7 @@ def job():
     #     print(f'Other error occurred: {err.__traceback__.}')
 
 
-schedule.every().day.at("22:22").do(job)
+schedule.every().day.at("08:37").do(job)
 while True:
     schedule.run_pending()
     time.sleep(1)

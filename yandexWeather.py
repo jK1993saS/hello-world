@@ -5,13 +5,12 @@ from aiohttp.web_response import json_response
 
 url = 'https://api.weather.yandex.ru/v1/forecast?lat=55.75396&lon=37.620393&extra=true'
 
-
 def read_week_forecast():
     return __json_to_forecasts(__read_json())
 
 
 def __read_json():
-    response = requests.get(url, headers={'X-Yandex-API-Key': os.environ['X-YANDEX-API-KEY']})
+    response = requests.get(url, headers={'X-Yandex-API-Key': '092926c1-fcd6-4204-b68e-bc5b0ee18f66'})
     return response.json()
 
 
